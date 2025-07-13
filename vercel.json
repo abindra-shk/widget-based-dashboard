@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "vite.config.ts",
+      "use": "@vitejs/vercel"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "/"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "widget-demo-1",
+    "type": "chart",
+    "title": "Monthly Sales",
+    "x": 0,
+    "y": 0,
+    "w": 6,
+    "h": 4,
+    "config": {
+      "data": [
+        { "name": "Jan", "value": 4000 },
+        { "name": "Feb", "value": 3000 },
+        { "name": "Mar", "value": 5000 },
+        { "name": "Apr", "value": 2780 },
+        { "name": "May", "value": 3900 },
+        { "name": "Jun", "value": 4300 }
+      ]
+    }
+  },
+  {
+    "id": "widget-demo-2",
+    "type": "table",
+    "title": "User Analytics",
+    "x": 6,
+    "y": 0,
+    "w": 6,
+    "h": 4,
+    "config": {
+      "data": {
+        "headers": ["User", "Sessions", "Bounce Rate", "Conversion"],
+        "rows": [
+          ["Alice Johnson", "124", "32%", "4.2%"],
+          ["Bob Smith", "98", "28%", "3.8%"],
+          ["Carol White", "156", "35%", "5.1%"],
+          ["David Brown", "87", "30%", "3.5%"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-demo-3",
+    "type": "text",
+    "title": "Welcome Message",
+    "x": 0,
+    "y": 4,
+    "w": 12,
+    "h": 2,
+    "config": {
+      "content": "Welcome to the Widget Dashboard! This is a scalable, configurable dashboard system built with React, Redux, and Material-UI. You can drag widgets around, resize them, add new ones, or remove existing ones. The dashboard supports charts, tables, and text widgets out of the box, and is designed to be easily extensible for new widget types."
+    }
+  }
+]
