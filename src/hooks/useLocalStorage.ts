@@ -8,7 +8,7 @@ import {
   saveConfigurationToLocalStorage,
 } from "../utils/configLoader";
 
-export const useLocalStorage = () => {
+export const useLocalStorage = (initialLoadCount = 3) => {
   const widgets = useSelector((state: RootState) => state.dashboard.widgets);
   const dispatch = useDispatch();
 
@@ -19,10 +19,10 @@ export const useLocalStorage = () => {
       dispatch(loadWidgetsFromConfig(savedWidgets));
     } else {
       // Load default configuration if no saved widgets
-      const defaultWidgets = loadDefaultConfiguration();
+      const defaultWidgets = loadDefaultConfiguration(initialLoadCount);
       dispatch(loadWidgetsFromConfig(defaultWidgets));
     }
-  }, [dispatch]);
+  }, [dispatch, initialLoadCount]);
 
   // Save widgets to localStorage whenever they change
   useEffect(() => {

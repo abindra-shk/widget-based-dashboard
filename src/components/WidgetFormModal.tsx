@@ -64,9 +64,11 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
   const [width, setWidth] = useState<number>(6);
   const [height, setHeight] = useState<number>(4);
   const [errors, setErrors] = useState({
-    title: false,
-    headers: false,
-    chartData: false,
+    title: { hasError: false, message: "" },
+    headers: { hasError: false, message: "" },
+    chartData: { hasError: false, message: "" },
+    tableRows: { hasError: false, message: "" },
+    formError: "",
   });
 
   useEffect(() => {
@@ -101,22 +103,79 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
       }
     }
     setErrors({
-      title: false,
-      headers: false,
-      chartData: false,
+      title: { hasError: false, message: "" },
+      headers: { hasError: false, message: "" },
+      chartData: { hasError: false, message: "" },
+      tableRows: { hasError: false, message: "" },
+      formError: "",
     });
   }, [initialData, open]);
 
   const validateForm = () => {
+    let isValid = true;
     const newErrors = {
-      title: !title.trim(),
-      headers:
-        type === "table" &&
-        (!config.data?.headers || config.data.headers.length > 5),
-      chartData: type === "chart" && (!config.data || config.data.length === 0),
+      title: { hasError: false, message: "" },
+      headers: { hasError: false, message: "" },
+      chartData: { hasError: false, message: "" },
+      tableRows: { hasError: false, message: "" },
+      formError: "",
     };
+
+    // Title validation
+    if (!title.trim()) {
+      newErrors.title = { hasError: true, message: "Title is required" };
+      isValid = false;
+    }
+
+    // Type-specific validations
+    if (type === "chart") {
+      const hasEmptyData = config.data?.some(
+        (item: any) => !item.name.trim() || item.value === ""
+      );
+      if (!config.data || config.data.length === 0 || hasEmptyData) {
+        newErrors.chartData = {
+          hasError: true,
+          message: "All chart data fields are required",
+        };
+        isValid = false;
+      }
+    } else if (type === "table") {
+      if (!config.data?.headers || config.data.headers.length === 0) {
+        newErrors.headers = {
+          hasError: true,
+          message: "At least one header is required",
+        };
+        isValid = false;
+      } else if (config.data.headers.length > 5) {
+        newErrors.headers = {
+          hasError: true,
+          message: "Maximum 5 columns allowed",
+        };
+        isValid = false;
+      }
+
+      const hasEmptyCells = config.data?.rows?.some((row: any[]) =>
+        row.some((cell) => !cell?.toString().trim())
+      );
+      if (hasEmptyCells) {
+        newErrors.tableRows = {
+          hasError: true,
+          message: "All table cells must be filled",
+        };
+        isValid = false;
+      }
+    } else if (type === "text") {
+      if (!config.content?.trim()) {
+        newErrors.title = {
+          hasError: true,
+          message: "Text content is required",
+        };
+        isValid = false;
+      }
+    }
+
     setErrors(newErrors);
-    return !Object.values(newErrors).some(Boolean);
+    return isValid;
   };
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -124,7 +183,11 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
-    setErrors({ ...errors, title: false });
+    setErrors({
+      ...errors,
+      title: { hasError: false, message: "" },
+      formError: "",
+    });
   };
 
   // === CHART ===
@@ -141,6 +204,11 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
       [field]: field === "value" ? (value === "" ? 0 : Number(value)) : value,
     };
     setConfig({ ...config, data: updated });
+    setErrors({
+      ...errors,
+      chartData: { hasError: false, message: "" },
+      formError: "",
+    });
   };
 
   const addChartRow = () => {
@@ -158,17 +226,17 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
 
   const setTableHeader = (headerString: string) => {
     const newHeaders = headerString.split(",").map((h) => h.trim());
-    if (newHeaders.length > 5) {
-      setErrors({ ...errors, headers: true });
-      return;
-    }
-    setErrors({ ...errors, headers: false });
     setConfig({
       ...config,
       data: {
         headers: newHeaders,
         rows: rows.map((r: any[]) => r.slice(0, newHeaders.length)),
       },
+    });
+    setErrors({
+      ...errors,
+      headers: { hasError: false, message: "" },
+      formError: "",
     });
   };
 
@@ -182,6 +250,11 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
     setConfig({
       ...config,
       data: { headers, rows: updatedRows },
+    });
+    setErrors({
+      ...errors,
+      tableRows: { hasError: false, message: "" },
+      formError: "",
     });
   };
 
@@ -206,8 +279,16 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
           rows={4}
           fullWidth
           value={config.content || ""}
-          onChange={(e) => setConfig({ ...config, content: e.target.value })}
+          onChange={(e) => {
+            setConfig({ ...config, content: e.target.value });
+            setErrors({
+              ...errors,
+              title: { hasError: false, message: "" },
+            });
+          }}
           sx={{ mt: 2 }}
+          error={errors.title.hasError}
+          helperText={errors.title.message}
         />
       );
     }
@@ -235,6 +316,7 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
                   }
                   fullWidth
                   size="small"
+                  error={errors.chartData.hasError && !entry.name.trim()}
                 />
               </Box>
               <Box sx={{ width: "45%" }}>
@@ -247,6 +329,7 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
                   }
                   fullWidth
                   size="small"
+                  error={errors.chartData.hasError && entry.value === ""}
                 />
               </Box>
               <Box>
@@ -263,9 +346,9 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
           <Button variant="outlined" onClick={addChartRow} size="small">
             Add Row
           </Button>
-          {errors.chartData && (
-            <Typography color="error" variant="caption">
-              At least one data row is required
+          {errors.chartData.hasError && (
+            <Typography color="error" variant="caption" display="block">
+              {errors.chartData.message}
             </Typography>
           )}
         </Box>
@@ -280,8 +363,8 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
             fullWidth
             value={headers.join(", ")}
             onChange={(e) => setTableHeader(e.target.value)}
-            error={errors.headers}
-            helperText={errors.headers ? "Maximum 5 columns allowed" : ""}
+            error={errors.headers.hasError}
+            helperText={errors.headers.message}
             size="small"
           />
           <Typography variant="subtitle1" sx={{ mt: 2 }}>
@@ -305,6 +388,10 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
                     }
                     fullWidth
                     size="small"
+                    error={
+                      errors.tableRows.hasError &&
+                      !row[colIdx]?.toString().trim()
+                    }
                   />
                 </Box>
               ))}
@@ -324,6 +411,11 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
               Add Row
             </Button>
           )}
+          {errors.tableRows.hasError && (
+            <Typography color="error" variant="caption" display="block">
+              {errors.tableRows.message}
+            </Typography>
+          )}
         </Box>
       );
     }
@@ -341,6 +433,12 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
         h: height,
       });
       onClose();
+    } else {
+      // Don't overwrite the specific error messages with a generic one
+      setErrors((prev) => ({
+        ...prev,
+        formError: "Please fix all validation errors",
+      }));
     }
   };
 
@@ -375,14 +473,14 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
           onChange={handleTitleChange}
           fullWidth
           sx={{ mt: 2 }}
-          error={errors.title}
-          helperText={errors.title ? "Title is required" : ""}
+          error={errors.title.hasError}
+          helperText={errors.title.message}
           size="small"
         />
 
         <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
           <TextField
-            label="Width (columns)"
+            label="Width (1–12 columns)"
             type="number"
             value={width === 0 ? "" : width}
             onChange={(e) => {
@@ -391,9 +489,10 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
             }}
             fullWidth
             size="small"
+            inputProps={{ min: 1, max: 12 }}
           />
           <TextField
-            label="Height (rows)"
+            label="Height (1–12 rows)"
             type="number"
             value={height === 0 ? "" : height}
             onChange={(e) => {
@@ -402,10 +501,22 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
             }}
             fullWidth
             size="small"
+            inputProps={{ min: 1, max: 12 }}
           />
         </Stack>
 
         {renderConfigInputs()}
+
+        {errors.formError && (
+          <Typography
+            color="error"
+            variant="caption"
+            display="block"
+            sx={{ mt: 1 }}
+          >
+            {errors.formError}
+          </Typography>
+        )}
 
         <Stack
           direction="row"
@@ -416,12 +527,7 @@ const WidgetFormModal: React.FC<WidgetFormModalProps> = ({
           <Button onClick={onClose} size="small">
             Cancel
           </Button>
-          <Button
-            variant="contained"
-            onClick={handleSubmit}
-            disabled={!title.trim()}
-            size="small"
-          >
+          <Button variant="contained" onClick={handleSubmit} size="small">
             {initialData ? "Save Changes" : "Add Widget"}
           </Button>
         </Stack>

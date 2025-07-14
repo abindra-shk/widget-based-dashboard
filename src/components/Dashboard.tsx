@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
 
   // Load and save widgets to localStorage
-  useLocalStorage();
+  useLocalStorage(3);
 
   // Convert widgets to grid layout format
   const layouts = {
@@ -85,7 +85,7 @@ const Dashboard: React.FC = () => {
   const cols = { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
+    <Container maxWidth="xl" sx={{ "&.MuiContainer-root": { p: 2, px: 2 } }}>
       {/* Dashboard Grid */}
       {widgets.length === 0 ? (
         <Alert severity="info" sx={{ mt: 2 }}>

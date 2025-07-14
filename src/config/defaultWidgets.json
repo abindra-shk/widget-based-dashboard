@@ -1,53 +1,824 @@
 [
   {
-    "id": "widget-demo-1",
+    "id": "widget-1",
     "type": "chart",
-    "title": "Monthly Sales",
+    "title": "Quarterly Revenue",
     "x": 0,
     "y": 0,
-    "w": 6,
-    "h": 4,
+    "w": 4,
+    "h": 3,
     "config": {
       "data": [
-        { "name": "Jan", "value": 4000 },
-        { "name": "Feb", "value": 3000 },
-        { "name": "Mar", "value": 5000 },
-        { "name": "Apr", "value": 2780 },
-        { "name": "May", "value": 3900 },
-        { "name": "Jun", "value": 4300 }
+        { "name": "Q1", "value": 12500 },
+        { "name": "Q2", "value": 18900 },
+        { "name": "Q3", "value": 14200 },
+        { "name": "Q4", "value": 21000 }
       ]
     }
   },
   {
-    "id": "widget-demo-2",
+    "id": "widget-2",
     "type": "table",
-    "title": "User Analytics",
-    "x": 6,
+    "title": "Top Customers",
+    "x": 4,
     "y": 0,
-    "w": 6,
-    "h": 4,
+    "w": 4,
+    "h": 3,
     "config": {
       "data": {
-        "headers": ["User", "Sessions", "Bounce Rate", "Conversion"],
+        "headers": ["Name", "Orders", "Total Spend"],
         "rows": [
-          ["Alice Johnson", "124", "32%", "4.2%"],
-          ["Bob Smith", "98", "28%", "3.8%"],
-          ["Carol White", "156", "35%", "5.1%"],
-          ["David Brown", "87", "30%", "3.5%"]
+          ["Acme Corp", 42, "$12,400"],
+          ["Globex", 38, "$9,850"],
+          ["Initech", 29, "$7,200"],
+          ["Umbrella", 25, "$6,100"]
         ]
       }
     }
   },
   {
-    "id": "widget-demo-3",
+    "id": "widget-3",
     "type": "text",
-    "title": "Welcome Message",
+    "title": "Announcement",
+    "x": 8,
+    "y": 0,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "content": "Team meeting scheduled for Friday at 2 PM to review Q3 results. Please prepare your reports in advance."
+    }
+  },
+  {
+    "id": "widget-4",
+    "type": "chart",
+    "title": "Website Traffic",
     "x": 0,
-    "y": 4,
+    "y": 3,
+    "w": 6,
+    "h": 4,
+    "config": {
+      "data": [
+        { "name": "Jan", "value": 4200 },
+        { "name": "Feb", "value": 3800 },
+        { "name": "Mar", "value": 5100 },
+        { "name": "Apr", "value": 4900 },
+        { "name": "May", "value": 6200 },
+        { "name": "Jun", "value": 7100 }
+      ]
+    }
+  },
+  {
+    "id": "widget-5",
+    "type": "table",
+    "title": "Project Status",
+    "x": 6,
+    "y": 3,
+    "w": 6,
+    "h": 4,
+    "config": {
+      "data": {
+        "headers": ["Project", "Status", "Due Date", "Owner"],
+        "rows": [
+          ["Dashboard Redesign", "On Track", "2025-08-15", "Alice"],
+          ["API Migration", "Delayed", "2025-09-01", "Bob"],
+          ["Mobile App", "Completed", "2025-07-10", "Carol"],
+          ["Security Audit", "Not Started", "2025-10-01", "Dave"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-6",
+    "type": "text",
+    "title": "Quick Notes",
+    "x": 0,
+    "y": 7,
+    "w": 4,
+    "h": 2,
+    "config": {
+      "content": "Remember to submit your timesheets by EOD Friday. The office will be closed next Monday for maintenance."
+    }
+  },
+  {
+    "id": "widget-7",
+    "type": "chart",
+    "title": "Server Load",
+    "x": 4,
+    "y": 7,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "CPU", "value": 65 },
+        { "name": "Memory", "value": 48 },
+        { "name": "Disk", "value": 32 },
+        { "name": "Network", "value": 22 }
+      ]
+    }
+  },
+  {
+    "id": "widget-8",
+    "type": "table",
+    "title": "Team Contacts",
+    "x": 8,
+    "y": 7,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Name", "Role", "Email"],
+        "rows": [
+          ["Alice", "Frontend", "alice@example.com"],
+          ["Bob", "Backend", "bob@example.com"],
+          ["Carol", "Design", "carol@example.com"],
+          ["Dave", "DevOps", "dave@example.com"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-9",
+    "type": "text",
+    "title": "Weather Forecast",
+    "x": 0,
+    "y": 9,
+    "w": 6,
+    "h": 2,
+    "config": {
+      "content": "Today: Sunny, 28°C. Tomorrow: Partly cloudy, 26°C. Weekend: Showers expected, 22°C."
+    }
+  },
+  {
+    "id": "widget-10",
+    "type": "chart",
+    "title": "Customer Satisfaction",
+    "x": 6,
+    "y": 9,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Excellent", "value": 45 },
+        { "name": "Good", "value": 35 },
+        { "name": "Average", "value": 12 },
+        { "name": "Poor", "value": 8 }
+      ]
+    }
+  },
+  {
+    "id": "widget-11",
+    "type": "table",
+    "title": "Recent Orders",
+    "x": 0,
+    "y": 11,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Order ID", "Customer", "Amount", "Status"],
+        "rows": [
+          ["#1001", "Acme Corp", "$1,200", "Shipped"],
+          ["#1002", "Globex", "$850", "Processing"],
+          ["#1003", "Initech", "$2,400", "Delivered"],
+          ["#1004", "Umbrella", "$950", "Shipped"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-12",
+    "type": "text",
+    "title": "Upcoming Holidays",
+    "x": 6,
+    "y": 12,
+    "w": 6,
+    "h": 2,
+    "config": {
+      "content": "Next company holidays: Independence Day (July 4), Summer Break (August 15-18), Labor Day (September 2)"
+    }
+  },
+  {
+    "id": "widget-13",
+    "type": "chart",
+    "title": "Product Distribution",
+    "x": 0,
+    "y": 14,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Widget A", "value": 35 },
+        { "name": "Widget B", "value": 28 },
+        { "name": "Widget C", "value": 22 },
+        { "name": "Widget D", "value": 15 }
+      ]
+    }
+  },
+  {
+    "id": "widget-14",
+    "type": "table",
+    "title": "Inventory Levels",
+    "x": 4,
+    "y": 14,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Product", "In Stock", "Reorder Level"],
+        "rows": [
+          ["Widget A", 142, 50],
+          ["Widget B", 87, 40],
+          ["Widget C", 53, 30],
+          ["Widget D", 29, 20]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-15",
+    "type": "text",
+    "title": "Quick Links",
+    "x": 8,
+    "y": 14,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "content": "Company Portal: https://portal.example.com\nHR System: https://hr.example.com\nIT Helpdesk: https://help.example.com"
+    }
+  },
+  {
+    "id": "widget-16",
+    "type": "chart",
+    "title": "Support Tickets",
+    "x": 0,
+    "y": 17,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Open", "value": 18 },
+        { "name": "In Progress", "value": 12 },
+        { "name": "Resolved", "value": 42 },
+        { "name": "Closed", "value": 35 }
+      ]
+    }
+  },
+  {
+    "id": "widget-17",
+    "type": "table",
+    "title": "Employee Attendance",
+    "x": 6,
+    "y": 17,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Name", "Present", "Absent", "Late"],
+        "rows": [
+          ["Alice", 20, 1, 0],
+          ["Bob", 19, 2, 1],
+          ["Carol", 21, 0, 0],
+          ["Dave", 18, 3, 2]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-18",
+    "type": "text",
+    "title": "Policy Update",
+    "x": 0,
+    "y": 20,
     "w": 12,
     "h": 2,
     "config": {
-      "content": "Welcome to the Widget Dashboard! This is a scalable, configurable dashboard system built with React, Redux, and Material-UI. You can drag widgets around, resize them, add new ones, or remove existing ones. The dashboard supports charts, tables, and text widgets out of the box, and is designed to be easily extensible for new widget types."
+      "content": "New remote work policy effective immediately: Employees may work remotely up to 3 days per week with manager approval."
+    }
+  },
+  {
+    "id": "widget-19",
+    "type": "chart",
+    "title": "Marketing ROI",
+    "x": 0,
+    "y": 22,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Social Media", "value": 320 },
+        { "name": "Email", "value": 280 },
+        { "name": "PPC", "value": 190 },
+        { "name": "Organic", "value": 150 }
+      ]
+    }
+  },
+  {
+    "id": "widget-20",
+    "type": "table",
+    "title": "Meeting Schedule",
+    "x": 6,
+    "y": 22,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Meeting", "Time", "Location"],
+        "rows": [
+          ["Standup", "9:30 AM", "Zoom"],
+          ["Sprint Planning", "Wed 2 PM", "Conf Room A"],
+          ["Retrospective", "Fri 4 PM", "Zoom"],
+          ["Client Review", "Thu 11 AM", "Conf Room B"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-21",
+    "type": "text",
+    "title": "IT Notice",
+    "x": 0,
+    "y": 25,
+    "w": 4,
+    "h": 2,
+    "config": {
+      "content": "System maintenance scheduled for tonight 10 PM - 2 AM. Please save your work."
+    }
+  },
+  {
+    "id": "widget-22",
+    "type": "chart",
+    "title": "Budget Allocation",
+    "x": 4,
+    "y": 25,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "R&D", "value": 35 },
+        { "name": "Marketing", "value": 25 },
+        { "name": "Operations", "value": 20 },
+        { "name": "HR", "value": 15 },
+        { "name": "IT", "value": 5 }
+      ]
+    }
+  },
+  {
+    "id": "widget-23",
+    "type": "table",
+    "title": "Training Sessions",
+    "x": 8,
+    "y": 25,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Course", "Date", "Instructor"],
+        "rows": [
+          ["React Advanced", "2025-08-10", "Alice"],
+          ["Security Basics", "2025-08-15", "Bob"],
+          ["Agile Methods", "2025-08-20", "Carol"],
+          ["Cloud Computing", "2025-08-25", "Dave"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-24",
+    "type": "text",
+    "title": "Facilities Update",
+    "x": 0,
+    "y": 27,
+    "w": 6,
+    "h": 2,
+    "config": {
+      "content": "New coffee machines installed in break rooms. Please report any issues to facilities@example.com"
+    }
+  },
+  {
+    "id": "widget-25",
+    "type": "chart",
+    "title": "Energy Consumption",
+    "x": 6,
+    "y": 27,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Jan", "value": 4200 },
+        { "name": "Feb", "value": 3900 },
+        { "name": "Mar", "value": 3700 },
+        { "name": "Apr", "value": 3500 },
+        { "name": "May", "value": 3300 },
+        { "name": "Jun", "value": 3100 }
+      ]
+    }
+  },
+  {
+    "id": "widget-26",
+    "type": "table",
+    "title": "Software Licenses",
+    "x": 0,
+    "y": 29,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Software", "License Type", "Expires"],
+        "rows": [
+          ["VS Code", "Open Source", "N/A"],
+          ["Figma", "Enterprise", "2025-12-31"],
+          ["Slack", "Premium", "2025-11-30"],
+          ["Zoom", "Business", "2026-01-15"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-27",
+    "type": "text",
+    "title": "Welcome New Hires",
+    "x": 6,
+    "y": 30,
+    "w": 6,
+    "h": 2,
+    "config": {
+      "content": "Please welcome our new team members: John (Marketing), Sarah (Engineering), and Mike (Design)."
+    }
+  },
+  {
+    "id": "widget-28",
+    "type": "chart",
+    "title": "Project Budget",
+    "x": 0,
+    "y": 32,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Allocated", "value": 100000 },
+        { "name": "Spent", "value": 65000 },
+        { "name": "Remaining", "value": 35000 }
+      ]
+    }
+  },
+  {
+    "id": "widget-29",
+    "type": "table",
+    "title": "Travel Schedule",
+    "x": 4,
+    "y": 32,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Employee", "Destination", "Dates"],
+        "rows": [
+          ["Alice", "New York", "2025-09-10 to 2025-09-12"],
+          ["Bob", "London", "2025-10-05 to 2025-10-09"],
+          ["Carol", "Tokyo", "2025-11-15 to 2025-11-20"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-30",
+    "type": "text",
+    "title": "Parking Notice",
+    "x": 8,
+    "y": 32,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "content": "East parking lot will be closed for resurfacing next week. Please use the west lot or public transportation."
+    }
+  },
+  {
+    "id": "widget-31",
+    "type": "chart",
+    "title": "Team Utilization",
+    "x": 0,
+    "y": 35,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Frontend", "value": 85 },
+        { "name": "Backend", "value": 78 },
+        { "name": "Design", "value": 65 },
+        { "name": "QA", "value": 72 }
+      ]
+    }
+  },
+  {
+    "id": "widget-32",
+    "type": "table",
+    "title": "Expense Report",
+    "x": 6,
+    "y": 35,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Category", "Amount", "Approved"],
+        "rows": [
+          ["Travel", "$1,250", "Yes"],
+          ["Equipment", "$850", "Pending"],
+          ["Training", "$1,200", "Yes"],
+          ["Software", "$450", "Yes"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-33",
+    "type": "text",
+    "title": "Cafeteria Menu",
+    "x": 0,
+    "y": 38,
+    "w": 12,
+    "h": 2,
+    "config": {
+      "content": "Today's Special: Chicken Tikka Masala with Basmati Rice. Vegetarian Option: Paneer Butter Masala."
+    }
+  },
+  {
+    "id": "widget-34",
+    "type": "chart",
+    "title": "Social Media Growth",
+    "x": 0,
+    "y": 40,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Twitter", "value": 45 },
+        { "name": "LinkedIn", "value": 38 },
+        { "name": "Facebook", "value": 28 },
+        { "name": "Instagram", "value": 32 }
+      ]
+    }
+  },
+  {
+    "id": "widget-35",
+    "type": "table",
+    "title": "Server Inventory",
+    "x": 4,
+    "y": 40,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Server", "Location", "Status"],
+        "rows": [
+          ["WEB-01", "Rack A", "Online"],
+          ["DB-01", "Rack B", "Online"],
+          ["APP-01", "Rack C", "Maintenance"],
+          ["BACKUP-01", "Rack D", "Standby"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-36",
+    "type": "text",
+    "title": "Wellness Program",
+    "x": 8,
+    "y": 40,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "content": "Free yoga classes every Wednesday at 5 PM in the recreation room. Mats provided."
+    }
+  },
+  {
+    "id": "widget-37",
+    "type": "chart",
+    "title": "Bug Reports",
+    "x": 0,
+    "y": 43,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Critical", "value": 8 },
+        { "name": "High", "value": 15 },
+        { "name": "Medium", "value": 22 },
+        { "name": "Low", "value": 35 }
+      ]
+    }
+  },
+  {
+    "id": "widget-38",
+    "type": "table",
+    "title": "Conference Schedule",
+    "x": 6,
+    "y": 43,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Event", "Date", "Location"],
+        "rows": [
+          ["DevConf", "2025-09-15", "San Francisco"],
+          ["TechSummit", "2025-10-20", "New York"],
+          ["UX Forum", "2025-11-05", "Chicago"],
+          ["Cloud Expo", "2025-12-10", "Las Vegas"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-39",
+    "type": "text",
+    "title": "Security Alert",
+    "x": 0,
+    "y": 46,
+    "w": 12,
+    "h": 2,
+    "config": {
+      "content": "Reminder: Always lock your workstation when stepping away. Report any suspicious emails to IT immediately."
+    }
+  },
+  {
+    "id": "widget-40",
+    "type": "chart",
+    "title": "Department Headcount",
+    "x": 0,
+    "y": 48,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Engineering", "value": 42 },
+        { "name": "Marketing", "value": 18 },
+        { "name": "Sales", "value": 24 },
+        { "name": "Operations", "value": 15 }
+      ]
+    }
+  },
+  {
+    "id": "widget-41",
+    "type": "table",
+    "title": "Office Supplies",
+    "x": 6,
+    "y": 48,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Item", "In Stock", "Needed"],
+        "rows": [
+          ["Pens", 142, 200],
+          ["Notepads", 85, 100],
+          ["Staplers", 32, 50],
+          ["Toner", 15, 30]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-42",
+    "type": "text",
+    "title": "Birthdays This Month",
+    "x": 0,
+    "y": 51,
+    "w": 4,
+    "h": 2,
+    "config": {
+      "content": "Alice (Aug 5), Bob (Aug 12), Carol (Aug 19), Dave (Aug 25)"
+    }
+  },
+  {
+    "id": "widget-43",
+    "type": "chart",
+    "title": "Code Review Stats",
+    "x": 4,
+    "y": 51,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Approved", "value": 85 },
+        { "name": "Changes Requested", "value": 42 },
+        { "name": "Pending", "value": 18 }
+      ]
+    }
+  },
+  {
+    "id": "widget-44",
+    "type": "table",
+    "title": "Meeting Rooms",
+    "x": 8,
+    "y": 51,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Room", "Capacity", "Booked"],
+        "rows": [
+          ["A", 8, "Yes"],
+          ["B", 12, "No"],
+          ["C", 6, "Yes"],
+          ["D", 4, "No"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-45",
+    "type": "text",
+    "title": "Volunteer Opportunity",
+    "x": 0,
+    "y": 53,
+    "w": 6,
+    "h": 2,
+    "config": {
+      "content": "Community tech workshop for students on Aug 25. Sign up with HR if interested in volunteering."
+    }
+  },
+  {
+    "id": "widget-46",
+    "type": "chart",
+    "title": "App Downloads",
+    "x": 6,
+    "y": 53,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "iOS", "value": 12500 },
+        { "name": "Android", "value": 9800 },
+        { "name": "Web", "value": 21500 }
+      ]
+    }
+  },
+  {
+    "id": "widget-47",
+    "type": "table",
+    "title": "Client Feedback",
+    "x": 0,
+    "y": 55,
+    "w": 6,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Client", "Rating", "Comments"],
+        "rows": [
+          ["Acme Corp", "5/5", "Excellent service"],
+          ["Globex", "4/5", "Timely delivery"],
+          ["Initech", "3/5", "Needs improvement"],
+          ["Umbrella", "5/5", "Will recommend"]
+        ]
+      }
+    }
+  },
+  {
+    "id": "widget-48",
+    "type": "text",
+    "title": "IT Security Tips",
+    "x": 6,
+    "y": 56,
+    "w": 6,
+    "h": 2,
+    "config": {
+      "content": "1. Use strong passwords\n2. Enable 2FA\n3. Update software regularly\n4. Beware phishing emails"
+    }
+  },
+  {
+    "id": "widget-49",
+    "type": "chart",
+    "title": "Team Velocity",
+    "x": 0,
+    "y": 58,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": [
+        { "name": "Sprint 1", "value": 35 },
+        { "name": "Sprint 2", "value": 42 },
+        { "name": "Sprint 3", "value": 38 },
+        { "name": "Sprint 4", "value": 45 }
+      ]
+    }
+  },
+  {
+    "id": "widget-50",
+    "type": "table",
+    "title": "Recruitment Pipeline",
+    "x": 4,
+    "y": 58,
+    "w": 4,
+    "h": 3,
+    "config": {
+      "data": {
+        "headers": ["Stage", "Count"],
+        "rows": [
+          ["Applied", 42],
+          ["Screening", 18],
+          ["Interview", 12],
+          ["Offer", 5]
+        ]
+      }
     }
   }
 ]

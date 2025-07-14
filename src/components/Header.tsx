@@ -13,6 +13,7 @@ import {
 import AddWidgetButton from "./AddWidgetButton";
 import { clearAllWidgets } from "../store/slices/dashboardSlice";
 import { useDispatch } from "react-redux";
+import LoadMoreWidgets from "./LoadMoreWidgets";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const Header: React.FC = () => {
           ) : (
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <AddWidgetButton />
+              <LoadMoreWidgets />
               <Button
                 color="error"
                 variant="outlined"

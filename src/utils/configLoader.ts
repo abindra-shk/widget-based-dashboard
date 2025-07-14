@@ -1,9 +1,10 @@
 import defaultWidgets from "../config/defaultWidgets.json";
 import type { Widget } from "../types";
 
-export const loadDefaultConfiguration = (): Widget[] => {
+export const loadDefaultConfiguration = (count?: number): Widget[] => {
   try {
-    return defaultWidgets as Widget[];
+    const allWidgets = defaultWidgets as Widget[];
+    return count ? allWidgets.slice(0, count) : allWidgets;
   } catch (error) {
     console.error("Failed to load default configuration:", error);
     return [];
